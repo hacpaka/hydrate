@@ -29,6 +29,14 @@ class Unit extends Application {
 	protected $unitEnvironmentPath = null;
 
 	/**
+	 * Get the path to the unit environment file directory.
+	 * @return string
+	 */
+	public final function unitEnvironmentPath(): string {
+		return $this->unitEnvironmentPath ?: $this->unitPath;
+	}
+
+	/**
 	 * Set the directory for the unit environment file.
 	 * @param string $path
 	 * @return $this
@@ -37,14 +45,6 @@ class Unit extends Application {
 		$this->unitEnvironmentPath = $path;
 
 		return $this;
-	}
-
-	/**
-	 * Get the path to the unit environment file directory.
-	 * @return string
-	 */
-	public final function unitEnvironmentPath(): string {
-		return $this->unitEnvironmentPath ?: $this->unitPath;
 	}
 
 	/**
