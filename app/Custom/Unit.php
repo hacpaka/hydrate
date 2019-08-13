@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Custom;
 
 use \Illuminate\Foundation\Application;
@@ -53,5 +54,14 @@ class Unit extends Application {
 	 */
 	public final function unitEnvironmentFilePath(): string {
 		return $this->unitEnvironmentPath() . DIRECTORY_SEPARATOR . $this->environmentFile();
+	}
+
+	/**
+	 * Get the path to the unit configuration files.
+	 * @param string $path
+	 * @return string
+	 */
+	public function unitConfigPath($path = '') {
+		return $this->unitPath . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
 	}
 }
