@@ -1,13 +1,26 @@
 <?php
-
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel {
+
+	/**
+	 * The bootstrap classes for the application.
+	 * @var array
+	 */
+	protected $bootstrappers = [
+		\App\Bootstrap\LoadHierarchicalEnvironmentVariables::class,
+		\App\Bootstrap\LoadHierarchicalConfiguration::class,
+
+		\Illuminate\Foundation\Bootstrap\HandleExceptions::class,
+		\Illuminate\Foundation\Bootstrap\RegisterFacades::class,
+		\Illuminate\Foundation\Bootstrap\RegisterProviders::class,
+		\Illuminate\Foundation\Bootstrap\BootProviders::class,
+	];
+
 	/**
 	 * The application's global HTTP middleware stack.
-	 *
 	 * These middleware are run during every request to your application.
 	 *
 	 * @var array

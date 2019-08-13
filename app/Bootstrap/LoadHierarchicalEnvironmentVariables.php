@@ -1,31 +1,27 @@
 <?php
 namespace App\Bootstrap;
 
-use \Dotenv\Dotenv;
-use \Dotenv\Exception\InvalidPathException;
-
 use \Illuminate\Contracts\Foundation\Application;
 use \Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use \Illuminate\Support\Env;
+
+use \App\Custom\HierarchicalDotenv;
 
 class LoadHierarchicalEnvironmentVariables
 	extends LoadEnvironmentVariables {
 
 	/**
-	 * Bootstrap the given application.
+	 * Create a Dotenv instance.
 	 *
-	 * @param Application $App
-	 * @return void
+	 * @param Application $app
+	 * @return HierarchicalDotenv
 	 */
-	public function bootstrap(Application $App): void {
-		if ($App->configurationIsCached()) {
-			return;
-		}
-
-		if (UNIT_PATH != base_path()) {
-			(new Dotenv(base_path(), env('APP_ENV', $App->environmentFile())))->load();
-		}
-
-		$this->checkForSpecificEnvironmentFile($App);
-		(new Dotenv($App->environmentPath(), $App->environmentFile()))->overload();
+	protected final function createDotenv($app) {
+		return HierarchicalDotenv::create([
+				$app->environmentPath(),
+				$app->unitEnvironmentPath()
+			], $app->environmentFile(),
+			Env::getFactory()
+		);
 	}
 }
