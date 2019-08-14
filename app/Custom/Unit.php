@@ -1,8 +1,13 @@
 <?php
-
 namespace App\Custom;
 
+use \Illuminate\Support\Collection;
+use \Illuminate\Support\Str;
+
+use \Illuminate\Filesystem\Filesystem;
 use \Illuminate\Foundation\Application;
+use \Illuminate\Foundation\PackageManifest;
+use \Illuminate\Foundation\ProviderRepository;
 
 class Unit extends Application {
 
@@ -11,6 +16,16 @@ class Unit extends Application {
 	 * @var string
 	 */
 	protected $unitPath = null;
+
+	/**
+	 * Get the units path.
+	 *
+	 * @param string $path
+	 * @return string
+	 */
+	public function unitPath($path = ''): string {
+		return $this->unitPath . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+	}
 
 	/**
 	 * Create a new unit instance.
@@ -63,5 +78,16 @@ class Unit extends Application {
 	 */
 	public function unitConfigPath($path = '') {
 		return $this->unitPath . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+	}
+
+	/**
+	 * Bind all of the application paths in the container.
+	 *
+	 * @return void
+	 */
+	protected function bindPathsInContainer() {
+		parent::bindPathsInContainer();
+
+		$this->instance('path.unit', $this->unitPath());
 	}
 }
