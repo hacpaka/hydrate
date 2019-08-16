@@ -33,9 +33,9 @@ class Unit extends Application {
 	 * @param string $unitPath
 	 */
 	public final function __construct(string $basePath = null, string $unitPath = null) {
-		parent::__construct($basePath);
-
 		$this->unitPath = $unitPath;
+
+		parent::__construct($basePath);
 	}
 
 	/**
@@ -81,6 +81,16 @@ class Unit extends Application {
 	}
 
 	/**
+	 * Get the path to the resources directory.
+	 *
+	 * @param string $path
+	 * @return string
+	 */
+	public final function resourcePath($path = '') {
+		return $this->unitPath . DIRECTORY_SEPARATOR . 'resources' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+	}
+
+	/**
 	 * Bind all of the application paths in the container.
 	 *
 	 * @return void
@@ -106,7 +116,6 @@ class Unit extends Application {
 		});
 
 		$providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
-
 		(new ProviderRepository($this, new Filesystem, $this->getCachedServicesPath()))
 			->load($providers->collapse()->toArray());
 	}
