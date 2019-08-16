@@ -35,6 +35,12 @@ class Unit extends Application {
 	public final function __construct(string $basePath = null, string $unitPath = null) {
 		$this->unitPath = $unitPath;
 
+		$this->booting(function(){
+			if (file_exists($file = $this->unitPath('bootstrap/unit.php'))){
+				require $file;
+			}
+		});
+
 		parent::__construct($basePath);
 	}
 
