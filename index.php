@@ -9,6 +9,17 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
+| Register The Laravel-MPS Helpers
+|--------------------------------------------------------------------------
+|
+| Laravel-MPS helpers provide support for additional features. They are
+| the significant part of the whole system and must be included before any logic.
+|
+*/
+require __DIR__ . '/bootstrap/helpers.php';
+
+/*
+|--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |
