@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -10,10 +9,10 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
-$app = new App\Custom\Unit(
-	dirname(__DIR__),
-	UNIT_PATH
-);
+
+$app = defined('UNIT_PATH')
+	? new App\Custom\Unit(dirname(__DIR__), UNIT_PATH)
+	: new App\Custom\Standard(dirname(__DIR__));
 
 /*
 |--------------------------------------------------------------------------
