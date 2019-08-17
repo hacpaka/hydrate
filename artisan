@@ -29,6 +29,19 @@ require __DIR__ . '/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
+| Initialize the units root directory
+|--------------------------------------------------------------------------
+|
+| The unit root directory has to be a subfolder
+| of the application base directory.
+|
+*/
+if (defined('UNIT_PATH')) {
+	require __DIR__ . '/bootstrap/mps/init.php';
+}
+
+/*
+|--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
