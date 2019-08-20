@@ -3,10 +3,10 @@ namespace App\Providers;
 
 use \Illuminate\Support\Str;
 
-use \Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use \Illuminate\Support\Facades\Route;
 
-class RouteServiceProvider extends ServiceProvider {
+class RouteServiceProvider extends
+	\Illuminate\Foundation\Support\Providers\RouteServiceProvider {
 
 	/**
 	 * @var bool
@@ -44,7 +44,6 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	protected function mapWebRoutes() {
 		if (file_exists($file = unit_path('routes/web.php'))) {
-
 			Route::middleware('web')
 				->namespace($this->namespace)
 				->group($file);

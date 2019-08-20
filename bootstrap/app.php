@@ -1,4 +1,18 @@
 <?php
+
+if (!function_exists('unit_path')) {
+
+	/**
+	 * Get the path to the units folder of the install.
+	 *
+	 * @param string $path
+	 * @return string
+	 */
+	function unit_path($path = '') {
+		return app()->unitPath($path);
+	}
+}
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -27,7 +41,7 @@ $app = defined('UNIT_PATH')
 
 $app->singleton(
 	Illuminate\Contracts\Http\Kernel::class,
-	App\Http\Kernel::class
+	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . '\Kernel') : App\Http\Kernel::class
 );
 
 $app->singleton(
