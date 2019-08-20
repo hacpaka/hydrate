@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Middleware;
 
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
+class CheckForMaintenanceMode
+	extends \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode {
 
-class CheckForMaintenanceMode extends Middleware {
 	/**
 	 * The URIs that should be reachable while maintenance mode is enabled.
 	 *
