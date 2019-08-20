@@ -1,4 +1,6 @@
 <?php
+use \Illuminate\Support\Str;
+
 /*
 | Validation of the unit root directory
 |--------------------------------------------------------------------------
@@ -36,6 +38,11 @@ try {
 
 		return $Matches[1];
 	}));
+
+	define('UNIT_NAMESPACE', call_user_func(function(){
+		return 'Units\\' . ucfirst(Str::camel(UNIT_NAME));
+	}));
+
 } catch (\Throwable $Exception) {
 	trigger_error($Exception->getMessage(), E_USER_ERROR);
 }
