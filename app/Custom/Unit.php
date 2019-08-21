@@ -97,6 +97,16 @@ class Unit extends Application {
 	}
 
 	/**
+	 * Get the path to the storage directory.
+	 *
+	 * @return string
+	 */
+	public function storagePath() {
+		return $this->storagePath ?: $this->unitPath . DIRECTORY_SEPARATOR . 'storage';
+	}
+
+
+	/**
 	 * Bind all of the application paths in the container.
 	 *
 	 * @return void
