@@ -1,17 +1,15 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Load The Shared Functions
+|--------------------------------------------------------------------------
+|
+| WARNING! These functions are significant for the bundle life
+| and can not be overloaded.
+|
+*/
 
-if (!function_exists('unit_path')) {
-
-	/**
-	 * Get the path to the units folder of the install.
-	 *
-	 * @param string $path
-	 * @return string
-	 */
-	function unit_path($path = '') {
-		return app()->unitPath($path);
-	}
-}
+include 'shared.php';
 
 /*
 |--------------------------------------------------------------------------

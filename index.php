@@ -7,16 +7,16 @@
  */
 define('LARAVEL_START', microtime(true));
 
-
 /*
 |--------------------------------------------------------------------------
-| Register The Laravel-MPS Helpers
+| Register The MPS-Bundle Specific Functions
 |--------------------------------------------------------------------------
 |
-| Laravel-MPS helpers provide support for additional features. They are
-| the significant part of the whole system and must be included before any logic.
+| WARNING! These functions are a significant part
+| of the whole bundle and can not be overloaded.
 |
 */
+
 require __DIR__ . '/bootstrap/preload.php';
 
 /*
