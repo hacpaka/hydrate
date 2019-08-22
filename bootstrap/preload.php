@@ -33,3 +33,16 @@ if (!function_exists('unit_path')) {
 		return app()->unitPath($path);
 	}
 }
+
+if (!function_exists('files_path')) {
+
+	/**
+	 * Get the path to the files folder.
+	 *
+	 * @param string $path
+	 * @return string
+	 */
+	function files_path($path = '') {
+		return app()->basePath('files') . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+	}
+}
