@@ -1,11 +1,14 @@
 <?php
-
 namespace App\Exceptions;
 
-use Exception;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use \Illuminate\Http\Request;
+use \Illuminate\Http\Response;
 
-class Handler extends ExceptionHandler {
+use \Exception;
+
+class Handler
+	extends \Illuminate\Foundation\Exceptions\Handler {
+
 	/**
 	 * A list of the exception types that are not reported.
 	 *
@@ -28,19 +31,21 @@ class Handler extends ExceptionHandler {
 	/**
 	 * Report or log an exception.
 	 *
-	 * @param \Exception $exception
+	 * @param Exception $Exception
 	 * @return void
+	 * @throws Exception
 	 */
-	public function report(Exception $exception) {
-		parent::report($exception);
+	public function report(Exception $Exception) {
+		parent::report($Exception);
 	}
 
 	/**
 	 * Render an exception into an HTTP response.
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \Exception $exception
-	 * @return \Illuminate\Http\Response
+	 * @param Request $request
+	 * @param Exception $exception
+	 * @return Response
+	 * @throws Exception
 	 */
 	public function render($request, Exception $exception) {
 		return parent::render($request, $exception);

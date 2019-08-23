@@ -4,6 +4,37 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
+| Check The MPS-Bundle Specific Command Line Syntax
+|--------------------------------------------------------------------------
+|
+| To specify the unit the additional argument
+| needs to be provided, like:
+|
+| 	artisan @unit command:name
+|
+| IMPORTANT! The unit specifier must follow DIRECTLY as a first
+| argument and must be led by an "at" character.
+|
+*/
+
+if ($argc > 1 && preg_match('/^@(.*)$/', trim($argv[1]), $Matches) > 0) {
+	if (!file_exists($unitPath = __DIR__ . '/units/' . $Matches[1])) {
+
+		/** @noinspection PhpUnhandledExceptionInspection */
+		throw new \Exception(sprintf('Undefined unit: %s!', $Matches[1]));
+	}
+
+	unset($argv[1]);
+
+	if (isset($_SERVER['argv'])){
+		unset($_SERVER['argv'][1]);
+	}
+
+	define('UNIT_PATH', $unitPath);
+}
+
+/*
+|--------------------------------------------------------------------------
 | Register The MPS-Bundle Specific Functions
 |--------------------------------------------------------------------------
 |
@@ -38,7 +69,7 @@ require __DIR__ . '/vendor/autoload.php';
 |
 */
 if (defined('UNIT_PATH')) {
-	require __DIR__ . '/bootstrap/mps/init.php';
+	require __DIR__ . '/bootstrap/bundle/init.php';
 }
 
 /*

@@ -39,12 +39,12 @@ $app = defined('UNIT_PATH')
 
 $app->singleton(
 	Illuminate\Contracts\Http\Kernel::class,
-	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . '\Kernel') : App\Http\Kernel::class
+	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . 'Kernel') : App\Http\Kernel::class
 );
 
 $app->singleton(
 	Illuminate\Contracts\Console\Kernel::class,
-	App\Console\Kernel::class
+	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . 'Console\Kernel') : App\Console\Kernel::class
 );
 
 $app->singleton(

@@ -40,7 +40,7 @@ try {
 	}));
 
 	define('UNIT_NAMESPACE', call_user_func(function(){
-		return 'Units\\' . ucfirst(Str::camel(UNIT_NAME));
+		return 'Units\\' . ucfirst(Str::camel(UNIT_NAME)) . '\\';
 	}));
 
 } catch (\Throwable $Exception) {

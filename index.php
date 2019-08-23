@@ -43,7 +43,7 @@ require __DIR__ . '/vendor/autoload.php';
 |
 */
 
-require __DIR__ . '/bootstrap/mps/init.php';
+require __DIR__ . '/bootstrap/bundle/init.php';
 
 /*
 |--------------------------------------------------------------------------
