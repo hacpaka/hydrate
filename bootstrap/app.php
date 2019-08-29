@@ -39,17 +39,23 @@ $app = defined('UNIT_PATH')
 
 $app->singleton(
 	Illuminate\Contracts\Http\Kernel::class,
-	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . 'Kernel') : App\Http\Kernel::class
+
+	defined('UNIT_NAMESPACE')
+		? (UNIT_NAMESPACE . 'Kernel') : App\Http\Kernel::class
 );
 
 $app->singleton(
 	Illuminate\Contracts\Console\Kernel::class,
-	defined('UNIT_NAMESPACE') ? (UNIT_NAMESPACE . 'Console\Kernel') : App\Console\Kernel::class
+
+	defined('UNIT_NAMESPACE')
+		? (UNIT_NAMESPACE . 'Console\Kernel') : App\Console\Kernel::class
 );
 
 $app->singleton(
 	Illuminate\Contracts\Debug\ExceptionHandler::class,
-	App\Exceptions\Handler::class
+
+	defined('UNIT_NAMESPACE') /*&& false*/
+		? (UNIT_NAMESPACE . 'Exceptions\Handler') : App\Exceptions\Handler::class
 );
 
 /*
