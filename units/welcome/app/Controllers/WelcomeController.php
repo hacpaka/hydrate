@@ -1,5 +1,5 @@
 <?php
-namespace Units\Dashboard\Controllers;
+namespace Units\Welcome\Controllers;
 
 use \Illuminate\Routing\Controller;
 

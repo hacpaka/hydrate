@@ -1,5 +1,5 @@
 <?php
-namespace Units\Dashboard\Console;
+namespace Units\Welcome\Console;
 
 use \Illuminate\Console\Scheduling\Schedule;
 use \ReflectionException;
