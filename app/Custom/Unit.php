@@ -9,7 +9,11 @@ use \Illuminate\Foundation\Application;
 use \Illuminate\Foundation\PackageManifest;
 use \Illuminate\Foundation\ProviderRepository;
 
-class Unit extends Application {
+use App\Custom\Standard;
+
+class Unit
+//	extends Application {
+	extends Standard {
 
 	/**
 	 * The custom unit path defined by the developer.
@@ -115,24 +119,5 @@ class Unit extends Application {
 		parent::bindPathsInContainer();
 
 		$this->instance('path.unit', $this->unitPath());
-	}
-
-	/**
-	 * @var array
-	 */
-	protected static $providersLoadingOrder = ['Illuminate', 'App', 'Units'];
-
-	/**
-	 * Register all of the configured providers.
-	 * @return void
-	 */
-	public function registerConfiguredProviders() {
-		$providers = Collection::make($this->config['app.providers'])->partition(function ($provider) {
-			return Str::startsWith($provider, 'Illuminate\\');
-		});
-
-		$providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
-		(new ProviderRepository($this, new Filesystem, $this->getCachedServicesPath()))
-			->load($providers->collapse()->toArray());
 	}
 }

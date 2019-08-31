@@ -11,7 +11,7 @@ class RouteServiceProvider extends
 	/**
 	 * @var bool
 	 */
-	public static $ignoreConsole = true;
+	public static $ignorableInConsole = true;
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.

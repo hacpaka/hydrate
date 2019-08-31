@@ -9,7 +9,16 @@ use \Illuminate\Foundation\Application;
 use \Illuminate\Foundation\PackageManifest;
 use \Illuminate\Foundation\ProviderRepository;
 
+use \Facade\Ignition\IgnitionServiceProvider;
+
 class Standard extends Application {
+
+	/**
+	 * @var array
+	 */
+	protected $ignorableInConsoleList = [
+		IgnitionServiceProvider::class,
+	];
 
 	/**
 	 * Register all of the configured providers.
@@ -18,12 +27,16 @@ class Standard extends Application {
 	 */
 	public function registerConfiguredProviders() {
 		$providers = Collection::make($this->config['app.providers'])->filter(function ($class){
-			return !property_exists($class, 'ignoreConsole') || !$class::$ignoreConsole;
+			return !app()->runningInConsole() || !property_exists($class, 'ignorableInConsole') || !$class::$ignorableInConsole;
 		})->partition(function ($provider) {
 			return Str::startsWith($provider, 'Illuminate\\');
 		});
 
-		$providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
+		$providers->splice(1, 0, [
+			array_filter($this->make(PackageManifest::class)->providers(), function(string $class){
+						return !in_array($class, $this->ignorableInConsoleList);
+					})
+		]);
 
 		(new ProviderRepository($this, new Filesystem, $this->getCachedServicesPath()))
 			->load($providers->collapse()->toArray());
