@@ -55,7 +55,7 @@ class Merger extends Loader {
 	/**
 	 * Read the given file.
 	 * @param string $filePath
-	 * @return \PhpOption\Option
+	 * @return Option
 	 */
 	private static function readFromFile($filePath) {
 		$content = @file_get_contents($filePath);

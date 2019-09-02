@@ -21,6 +21,7 @@ class LoadHierarchicalEnvironmentVariables
 				$app->environmentPath(),
 				$app->unitEnvironmentPath()
 			], $app->environmentFile(),
+
 			Env::getFactory()
 		);
 	}

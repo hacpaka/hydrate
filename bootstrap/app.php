@@ -54,7 +54,7 @@ $app->singleton(
 $app->singleton(
 	Illuminate\Contracts\Debug\ExceptionHandler::class,
 
-	defined('UNIT_NAMESPACE') /*&& false*/
+	defined('UNIT_NAMESPACE')
 		? (UNIT_NAMESPACE . 'Exceptions\Handler') : App\Exceptions\Handler::class
 );
 

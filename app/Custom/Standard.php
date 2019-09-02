@@ -25,7 +25,7 @@ class Standard extends Application {
 	 *
 	 * @return void
 	 */
-	public function registerConfiguredProviders() {
+	public final function registerConfiguredProviders() {
 		$providers = Collection::make($this->config['app.providers'])->filter(function ($class){
 			return !app()->runningInConsole() || !property_exists($class, 'ignorableInConsole') || !$class::$ignorableInConsole;
 		})->partition(function ($provider) {
@@ -34,8 +34,8 @@ class Standard extends Application {
 
 		$providers->splice(1, 0, [
 			array_filter($this->make(PackageManifest::class)->providers(), function(string $class){
-						return !in_array($class, $this->ignorableInConsoleList);
-					})
+					return !app()->runningInConsole() ||  !in_array($class, $this->ignorableInConsoleList);
+				})
 		]);
 
 		(new ProviderRepository($this, new Filesystem, $this->getCachedServicesPath()))

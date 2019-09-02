@@ -9,10 +9,9 @@ use \Illuminate\Foundation\Application;
 use \Illuminate\Foundation\PackageManifest;
 use \Illuminate\Foundation\ProviderRepository;
 
-use App\Custom\Standard;
+use \App\Custom\Standard;
 
 class Unit
-//	extends Application {
 	extends Standard {
 
 	/**
