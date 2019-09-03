@@ -15,7 +15,7 @@ class WelcomeController extends Controller {
 	/**
 	 * @return View
 	 */
-	public final function main(){
+	public final function welcome() {
 		return view('welcom.blade.php');
 	}
 }
