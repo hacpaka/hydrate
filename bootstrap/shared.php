@@ -2,11 +2,10 @@
 
 /*
 |--------------------------------------------------------------------------
-| Load The Shared Functions
+| Shared Functions
 |--------------------------------------------------------------------------
 |
-| Functions declared here become common for all projects.
-| This file is going to be loaded automatically during the startup process.
+| These functions are shared between all projects.
+| They are going to be loaded automatically during the startup process.
 |
 */
-

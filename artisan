@@ -74,6 +74,33 @@ if (defined('UNIT_PATH')) {
 
 /*
 |--------------------------------------------------------------------------
+| Load Shared Functions
+|--------------------------------------------------------------------------
+|
+| These functions are shared between all projects.
+| They are going to be loaded automatically during the startup process.
+|
+*/
+
+include 'bootstrap/shared.php';
+
+/*
+|--------------------------------------------------------------------------
+| Load Unit Functions
+|--------------------------------------------------------------------------
+|
+| These functions are unique for a unit.
+| They are going to be loaded automatically during the startup process.
+|
+*/
+
+if (defined('UNIT_PATH')
+	&& file_exists($file = UNIT_PATH . '/bootstrap/autoload.php')){
+		include $file;
+}
+
+/*
+|--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |

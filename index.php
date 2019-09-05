@@ -9,7 +9,7 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
-| Register The MPS-Bundle Specific Functions
+| Register MPS-Bundle Specific Functions
 |--------------------------------------------------------------------------
 |
 | WARNING! These functions are a significant part
@@ -47,6 +47,32 @@ require __DIR__ . '/bootstrap/bundle/init.php';
 
 /*
 |--------------------------------------------------------------------------
+| Load Shared Functions
+|--------------------------------------------------------------------------
+|
+| These functions are shared between all projects.
+| They are going to be loaded automatically during the startup process.
+|
+*/
+
+include 'bootstrap/shared.php';
+
+/*
+|--------------------------------------------------------------------------
+| Load Unit Functions
+|--------------------------------------------------------------------------
+|
+| These functions are unique for a unit.
+| They are going to be loaded automatically during the startup process.
+|
+*/
+
+if (file_exists($file = UNIT_PATH . '/bootstrap/autoload.php')){
+	include $file;
+}
+
+/*
+|--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
@@ -74,7 +100,7 @@ $app = require_once __DIR__ . '/bootstrap/app.php';
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
-	$request = \Illuminate\Http\Request::capture()
+	$request = Illuminate\Http\Request::capture()
 );
 
 $response->send();
