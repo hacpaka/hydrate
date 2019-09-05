@@ -10,7 +10,7 @@ _George Orwell, 1984_
 The multi-project build of [Laravel](http://laravel.com/), a web application framework with expressive, sometimes elegant syntax.
 
 ## Version
-Originally builded from version [6.2](https://github.com/laravel/laravel/tree/v6.2.0). 
+Originally based on version [6.2](https://github.com/laravel/laravel/tree/v6.2.0). 
 
 ## Compatibility
 Laravel MPS is fully compatible with the original [Laravel](https://github.com/laravel/laravel) build.
