@@ -9,10 +9,14 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.2",
+		"able/helpers": "dev-master",
+		"able/laravel-bridge": "dev-master",
+		"able/prototypes": "dev-master",
 		"fideloper/proxy": "^4.0",
 		"laravel/framework": "^6.2",
 		"laravel/helpers": "^1.1",
 		"laravel/tinker": "^1.0",
+		"thomaswelton/laravel-gravatar": "^1.1"
 	},
 	"require-dev": {
 		"facade/ignition": "^1.4",
@@ -34,6 +38,8 @@
 	"autoload": {
 		"psr-4": {
 			"App\\": "app/",
+			"Core\\": "core/",
+			"Units\\Dashboard\\": "units/dashboard/app/",
 			"Units\\Welcome\\": "units/welcome/app/"
 		},
 		"classmap": [

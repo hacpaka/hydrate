@@ -1,6 +1,9 @@
 <?php
 namespace App\Custom;
 
+use \Symfony\Component\HttpFoundation\Request;
+use \Symfony\Component\HttpFoundation\Response;
+
 use \Illuminate\Support\Collection;
 use \Illuminate\Support\Str;
 
@@ -15,6 +18,8 @@ use \Illuminate\Log\LogServiceProvider;
 use \App\Providers\RoutingServiceProvider;
 use \Facade\Ignition\IgnitionServiceProvider;
 
+use \Exception;
+
 class Standard extends Application {
 
 	/**
@@ -26,8 +31,6 @@ class Standard extends Application {
 
 	/**
 	 * Register all of the configured providers.
-	 *
-	 * @return void
 	 */
 	public final function registerConfiguredProviders() {
 		$providers = Collection::make($this->config['app.providers'])->filter(function ($class) {
@@ -48,8 +51,6 @@ class Standard extends Application {
 
 	/**
 	 * Register all of the base service providers.
-	 *
-	 * @return void
 	 */
 	protected function registerBaseServiceProviders() {
 		$this->register(new EventServiceProvider($this));

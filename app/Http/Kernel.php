@@ -1,9 +1,7 @@
 <?php
 namespace App\Http;
 
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
-class Kernel extends HttpKernel {
+class Kernel extends \App\Custom\Abstractions\AKernel {
 
 	/**
 	 * The bootstrap classes for the application.
