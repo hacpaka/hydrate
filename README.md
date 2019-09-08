@@ -17,7 +17,7 @@ The non-official build of [Laravel](http://laravel.com/), a web application fram
 Originally based on [Laravel](http://laravel.com/) version [6.2](https://github.com/laravel/laravel/tree/v6.2.0). 
 
 ## Compatibility
-Laravel MPS is fully compatible with the original [Laravel](https://github.com/laravel/laravel) build.
+Hydrate is fully compatible with the original [Laravel](https://github.com/laravel/laravel) build.
 
 ## License
 Hydrate is open source and released under the terms of the  [MIT license](https://opensource.org/licenses/MIT).
