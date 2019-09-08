@@ -7,7 +7,7 @@ _George Orwell, 1984_
 
 
 ## Overview
-The non-official build of [Laravel](http://laravel.com/), a web application framework with expressive, sometimes elegant syntax.
+The **Laravel Hydrate** (LaR ° 10H<sub>2</sub>O) is a non-official build of [Laravel](http://laravel.com/), a web application framework with expressive, sometimes elegant syntax.
 
 ### List of impovements
 1. Multiple projects support.
